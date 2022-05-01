@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
+import HeaderLogo from "../public/assets/logo.png";
 
 const Header = () => {
   return (
     <header className="header__main">
       <div className="header__logo">
-        {/* <img src={LogoNike.src} alt="nike" /> */}
+        <img src={HeaderLogo.src} alt="shop" />
       </div>
       <nav className="header__nav">
         <ul className="nav__list">
@@ -15,13 +16,13 @@ const Header = () => {
             {/* </Link> */}
           </li>
           <li className="nav__item">
-            {/* <Link href="/"> */}
-              <a className="nav__link">About</a>
-            {/* </Link> */}
+            <Link href="/shop">
+              <a className="nav__link">Shop</a>
+            </Link>
           </li>
           <li className="nav__item">
             {/* <Link href="/"> */}
-              <a className="nav__link">Shop</a>
+              <a className="nav__link">About</a>
             {/* </Link> */}
           </li>
           <li className="nav__item">
