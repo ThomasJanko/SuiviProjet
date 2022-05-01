@@ -4,7 +4,7 @@ const apiUrl = "http://localhost:1337/api";
 
 export default {
     getProducts() {
-        return axios.get(`${apiUrl}/products`).then((res) => console.log(res));
+        return axios.get(`${apiUrl}/products`).then((res) => res.data);
     },
 
     // getProducts() {

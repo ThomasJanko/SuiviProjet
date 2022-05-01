@@ -7,10 +7,9 @@ const Index = () => {
   useEffect(() => {
     productService
       .getProducts()
-      .then((data) => {
-        console.log("products", data.data).data;
-        setProducts(data.data.data);
-        console.log("productxxxxxs", products);
+      .then((response) => {
+        console.log("products", response.data);
+        setProducts(response.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -19,7 +18,7 @@ const Index = () => {
     <div className="products__grid">
       {products &&
         products.map((product) => (
-          <h1 key={product.id}>{product.title}</h1>
+          <h1 key={product.id}>{product.attributes.title}</h1>
         ))}
     </div>
   );
