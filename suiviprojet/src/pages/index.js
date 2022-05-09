@@ -1,9 +1,10 @@
-import TitlePage from "../components/TitlePage";
+import Home from "../components/Home";
 
-export default function Home() {
+
+export default function HomePage() {
   return (
     <div className="page__home">
-      <TitlePage title="Homepage" />
+      <Home/>
       
     </div>
   );
