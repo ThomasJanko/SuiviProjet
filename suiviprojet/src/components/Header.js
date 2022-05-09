@@ -50,7 +50,7 @@ const Header = () => {
 
   
 
-    <header className="pl-60 -my-10  shadow-sm bg-teal-400">
+    <header className="pl-60 -my-10 mb-10 shadow-sm bg-teal-400">
       <div className=" container flex items-center justify-between">
           <a href="#">
           <img src={logo.src} alt="Quick'Up" className="w-44" />
