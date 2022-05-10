@@ -21,16 +21,24 @@
 
 
 .price {
-    color: $primaryColor;
+    color: green;
     font-size: 22px;
   }
   
   
   .card-image{
-      width: 220px;
-      height: 280px;
+      width: 80%;
+      height: 300px;
+      margin-left: 30px;
+     
   }
 
+  .card_desc{
+    max-height: 260px;
+    overflow-y: auto;
+  }
+
+  
 
 .cards-products{
 
@@ -40,20 +48,24 @@
     align-items: center;
     
     
+    
 
 
     .card{
+      
         width: 400px;
         height: 700px;
         display: inline-block;
-        margin: 20px;
+        margin: 20px 10px;
         border: solid;
-        border-width: 1px;
+        border-radius: 10px;
+        border-width: 2px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
         text-align: center;
+        // background-color: white;
         font-family: $titleFont;
         &:hover{
-            border-color: blue;
+            border-color: $primaryColor;
         }
             
     }
@@ -85,6 +97,9 @@
 .cart_img{
   width: 52px;
   height: 60px;
+  
+  
+ 
 }
 
 

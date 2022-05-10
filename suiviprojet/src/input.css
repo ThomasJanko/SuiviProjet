@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+.card{
+    @apply 
+    bg-white text-gray-700 w-72 min-h-[10rem]
+    shadow-lg rounded-md overflow-hidden
+}
+
+.badge{
+    @apply
+    px-3 py-1 rounded-full text-ws bg-gray-100
+} */

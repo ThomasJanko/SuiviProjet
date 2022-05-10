@@ -1,11 +1,46 @@
-import Home from "../components/Home";
+import { useEffect, useState } from "react";
+import ProductCard from "../components/ProductCard";
+import TitlePage from "../components/TitlePage";
+
+
 
 
 export default function HomePage() {
+
+
+  const [products, setProducts] = useState();
+  // const [isLogged, setIslogged] = useState(false);
+
+  useEffect(() => {
+
+    
+    fetch(`https://fakestoreapi.com/products/`)
+    .then(res=>res.json())
+    .then(data=>setProducts(data))  
+    
+  }, [])
+  
   return (
-    <div className="page__home">
-      <Home/>
+    <>
+
+    <div className="home_page">
       
-    </div>
+  
+        {/* <TitlePage title="Shop"  /> */}
+       
+ 
+        <div className='cards-products'>
+               
+        {products && products.map((product) => (
+            <ProductCard product={product} /> 
+        ))}
+         
+
+
+           
+       
+        </div>
+        </div>
+        </>
   );
 }
