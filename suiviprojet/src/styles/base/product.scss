@@ -115,3 +115,37 @@
   left: 50%;
   top: 40%;
 }
+
+
+/*********** ONE PRODUCT *************/
+
+.one-product{
+  margin: 150px auto;
+  display: flex;
+  width: 90%;
+
+  .divider{
+    border-left: 1px solid black;
+    margin: 0 3%;
+  }
+
+  &__data{
+    margin: auto;
+
+    &__title{
+      margin: 10px 0;
+    }
+
+    &__price{
+      margin: 10px 0;
+    }
+
+    &__buttonADD{
+      margin: 10px 0;
+      background-color: red;
+      color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  }
+}
