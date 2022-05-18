@@ -1,5 +1,7 @@
 const apiUrl = "http://localhost:1337/api";
 export default {
+
+
 	register(payload) {
 		return fetch(`${apiUrl}/auth/local/register`, {
 			method: "POST",
@@ -18,6 +20,7 @@ export default {
 			body: JSON.stringify(payload),
 		}).then((res) => res.json());
 	},
+	
 	getMe(jwt) {
 		return fetch(`${apiUrl}/users/me`, {
 			headers: {
