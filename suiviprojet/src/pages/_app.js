@@ -8,6 +8,7 @@ import { useState } from 'react';
 function MyApp({ Component, pageProps }) {
 
   const [user, setUser] = useState("User")
+
   return (
     <AppContext.Provider
     value={{
