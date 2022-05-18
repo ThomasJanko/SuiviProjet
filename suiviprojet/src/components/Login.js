@@ -1,102 +1,70 @@
+import React, { useState } from 'react';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-// import userService from '../service/user.service';
+import userService from '../services/user.service';
 import Modal from './Modal';
+import { useRouter } from 'next/router';
 
 
 const Login = () => {
 
-    const [identifier, setIdentifier] = useState();
-    const [password, setPassword] = useState();
-    const [log, setLog] = useState({})
+    const router = useRouter();
+    const [user, setUser] = useState({});
     const [showModal, setShowModal] = useState(false);
-
-  
-
-    useEffect(() => {
-
-            //Récupération du localstorage Login
-           setLog(JSON.parse(localStorage.getItem('Login')))
-           console.log(log)
-        }, []);
-
-    // const Login = () => {
-        
-    //     const obj ={
-    //         identifier : identifier,
-    //         password: password
-    //     }
-
-    //     //Appel du service login
-    //     userService.login(obj)
-
-    //     let log =JSON.parse(localStorage.getItem('Login'))
-        
-    //     //si authentification == success
-    //     if(log.auth === true){
-    //         console.log('success')
-    //         localStorage.setItem('Auth', JSON.stringify(obj))
+   
+    const submitLogin = (e) => {
+        e.preventDefault();
+        userService.login(user)
+                .then((data) => { 
+            localStorage.setItem('token', data.jwt);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            if(data.error){
+                setShowModal(true)
+            }
+            else{
+                router.push('/')
+            }
             
-    //         //redirection vers homePage
-    //         window.location.href = '/';
-
-    //     }
-    //     else{
-            
-    //         //si Authentification == failed
-    //         //Message d'erreur
-    //         setShowModal(true)
-    //     }
-
-    // }
-
-    // const Logout = () => {
-    //     //vider le localstorage pour déconnecter l'utilisateur
-    //     localStorage.setItem('Login', JSON.stringify({auth: false}))
-    //     localStorage.setItem('Auth', JSON.stringify({}))
-    //     setLog(JSON.parse(localStorage.getItem('Login')))
-
-    //     //Redirection vers homePage
-    //     window.location.href = '/';
-    // }
+          })
+          .catch(err => console.log(err))
+      }
+      
 
     return (
         <div className='bg_img_login'>
-             <Modal title="Erreur" isActive={showModal} closeFunction={()=>setShowModal(!showModal)} type="information">
-                <p>Contenue ajouté à votre liste de Films</p>
-             </Modal>
-             
-           
-        <div className='card__login'>
-            <h1 className='card__title'>Sign In</h1>
+        <Modal title="Erreur" isActive={showModal} closeFunction={()=>setShowModal(!showModal)} type="information">
+           <p>Identifiant ou password Incorrect</p>
+        </Modal>
+        
+      
+   <div className='card__login'>
+       <h1 className='card__title'>Sign In</h1>
 
-            <form className='auth_textfield' onSubmit={(e) => e.preventDefault()}>
+       <form className='auth_textfield' onSubmit={(e) => submitLogin(e)}>
 
-                <input className='textfield' type="text" placeholder='Email or phone number' value={identifier} onChange={(e) => {
-                setIdentifier(e.target.value);
-                }}/>
+           <input className='textfield' type="text" placeholder='Email' onChange={(e) => setUser({ ...user, identifier: e.target.value })}
+           />
 
-                <input className='textfield' type="password" placeholder='Password' value={password} onChange={(e) => {
-                setPassword(e.target.value);
-                }}/>
+           <input className='textfield' type="password" placeholder='Password' onChange={(e) => setUser({ ...user, password: e.target.value })}
+          
+           />
 
-                <button type="submit" className='login__btn' onClick={() => Login()}>Sign In</button>
-                </form>
+           <button type="submit" className='login__btn' onClick={() => Login()}>Sign In</button>
+           </form>
 
-                <span className='login_signup'>
-                <Link href="/register">
-                 <strong>Sign up now</strong>
-                 </Link>
-                 </span>
-                 </div>
-                 {/* : 
-                 
-                    <button className='logout__btn' onClick={() => Logout()}>
-                        Se Déconnecter
-                    </button> */}
-                 
-               
-        </div>
+           <span className='login_signup'>
+           <Link href="/register">
+            <strong>Sign up now</strong>
+            </Link>
+            </span>
+            </div>
+            {/* : 
+            
+               <button className='logout__btn' onClick={() => Logout()}>
+                   Se Déconnecter
+               </button> */}
+            
+          
+   </div>
     );
 }
 
