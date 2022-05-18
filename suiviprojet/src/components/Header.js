@@ -25,7 +25,8 @@ const Header = () => {
               
               </span> 
 
-              <input type="text" className="w-full border border-orange-500 border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none" placeholder="search" /> 
+              <input  type="text" className="w-full border border-orange-500 border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none" placeholder="search" 
+              onChange={(e) => store.setSearch( e.target.value )}  /> 
 
               <button className="bg-red-500 border-red-500 text-white px-8 rounded-r-md hover:bg-red-400 hover:text-white transition" >Search</button>
           </div>
