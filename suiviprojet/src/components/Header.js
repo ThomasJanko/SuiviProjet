@@ -1,17 +1,21 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import logo from "../public/assets/logo.png";
+import { useContext } from "react";
+import AppContext from "../AppContext";
 
 const Header = () => {
 
+  const store = useContext(AppContext)
   return (
  
     <header className=" -my-10  shadow-sm bg-teal-400 relative" >
       <div className=" flex items-center justify-between" style={{marginRight: "100px", marginLeft: "100px"}}>
       <Link href="/">
-          <img src={logo.src} alt="Quick'Up" className="w-44" />
+          <img src={logo.src}  alt="Quick'Up" className="w-44" />
               
       </Link>
+      
 
 
           <div className="w-full max-w-xl relative flex"> 
@@ -61,7 +65,7 @@ const Header = () => {
               <ion-icon name="person-circle-outline"></ion-icon>
               </div>
               <div className="text-xs leading-3">
-                Account
+                {store.state.user}
               </div>
 
               {/* <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-red-600 text-white text-xs"> 8 </span> */}
@@ -69,6 +73,10 @@ const Header = () => {
             </Link>
           </div>
       </div>
+      
+      <button type="" ></button>
+     
+     
 
     </header>
     

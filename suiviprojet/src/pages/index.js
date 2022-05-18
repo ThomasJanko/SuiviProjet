@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProductCard from "../components/ProductCard";
 import TitlePage from "../components/TitlePage";
-
+import AppContext from "../AppContext";
 
 
 

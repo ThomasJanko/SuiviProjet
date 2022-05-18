@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Link from 'next/link';
 import userService from '../services/user.service';
 import Modal from './Modal';
 import { useRouter } from 'next/router';
+import AppContext from '../AppContext';
+
 
 
 const Login = () => {
 
     const router = useRouter();
+    const store = useContext(AppContext);
     const [user, setUser] = useState({});
     const [showModal, setShowModal] = useState(false);
    
@@ -17,6 +20,8 @@ const Login = () => {
                 .then((data) => { 
             localStorage.setItem('token', data.jwt);
             localStorage.setItem('user', JSON.stringify(data.user));
+            
+            store.setUser(data.user.username)
             if(data.error){
                 setShowModal(true)
             }
