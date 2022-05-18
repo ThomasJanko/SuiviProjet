@@ -3,9 +3,9 @@ import Register from '../../components/Register';
 
 const Index = () => {
     return (
-        <div>
+        
             <Register/>
-        </div>
+        
     );
 }
 
