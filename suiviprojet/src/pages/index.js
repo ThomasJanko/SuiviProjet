@@ -5,10 +5,13 @@ import AppContext from "../AppContext";
 
 
 
+
 export default function HomePage() {
 
-
-  const [products, setProducts] = useState();
+  const store = useContext(AppContext);
+  
+  const [products, setProducts] = useState([]);
+  var [filteredProducts, setFilteredProducts] = useState([]);
   // const [isLogged, setIslogged] = useState(false);
 
   useEffect(() => {
@@ -16,9 +19,29 @@ export default function HomePage() {
     
     fetch(`https://fakestoreapi.com/products/`)
     .then(res=>res.json())
-    .then(data=>setProducts(data))  
+    .then(data=> {
+      setProducts(data)
+      setFilteredProducts(data)
+    })  
     
   }, [])
+
+  
+  if (products) {
+    filteredProducts = products.filter((product) => {
+      if (
+        product.title.toLowerCase().includes(store.state.search) 
+        // product.tags.toLowerCase().includes(store.state.search)
+      ) {
+        console.log(product);
+        return product;
+        
+      }
+      return null;
+    });
+  }
+
+
   
   return (
     <>
@@ -30,15 +53,17 @@ export default function HomePage() {
        
  
         <div className='cards-products'>
-               
-        {products && products.map((product) => (
+
+    {/* {filteredProducts && (
+      <ProductCard products />
+    )} */}
+
+    
+    {filteredProducts && filteredProducts.map((product) => (
             <ProductCard product={product} /> 
         ))}
          
-
-
-           
-       
+ 
         </div>
         </div>
         </>
