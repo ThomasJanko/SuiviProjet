@@ -60,8 +60,8 @@ const Register = () => {
           </button>
         </form>
 
-        <span className="login_signup">
-          <Link href="/login">
+           <span className='login_signup'>
+           <Link href="/account">
             <strong>Login</strong>
           </Link>
         </span>
