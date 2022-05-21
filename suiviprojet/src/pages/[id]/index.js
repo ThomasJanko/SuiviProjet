@@ -19,6 +19,42 @@ const Index = () => {
       });
   }, []);
 
+  const addToCart = (e, product) => {
+    //Create object with new property quantity
+    let productToInsert = {
+      id: product.id,
+      title: product.attributes.title,
+      image: product.attributes.image,
+      price: product.attributes.price,
+      quantity: 1,
+    };
+
+    const myCart = [];
+
+    if (localStorage.getItem("cart")) {
+
+      const localStorageCart = JSON.parse(localStorage.getItem("cart"));
+
+      localStorageCart.forEach((element) => {
+        myCart.push(element);
+      });
+
+      const indexOfExistingId = myCart.findIndex((el) => el.id === product.id);
+
+      if (indexOfExistingId !== -1){
+        myCart[indexOfExistingId].quantity ++;
+      }
+      else{
+        myCart.push(productToInsert);
+      }
+      
+      localStorage.setItem("cart", JSON.stringify(myCart));
+    } else {
+      myCart.push(productToInsert);
+      localStorage.setItem("cart", JSON.stringify(myCart));
+    }
+  };
+
   return (
     <>
       <div className="one-product">
@@ -40,7 +76,7 @@ const Index = () => {
             {product && product.attributes.description}
           </p>
 
-          <button className="one-product__data__buttonADD">
+          <button className="one-product__data__buttonADD" onClick={e => addToCart(e, product)}>
             Add to Cart
           </button>
         </div>
