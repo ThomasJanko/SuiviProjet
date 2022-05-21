@@ -11,18 +11,18 @@ export default function HomePage() {
   const store = useContext(AppContext);
   
   const [products, setProducts] = useState([]);
-  var [filteredProducts, setFilteredProducts] = useState([]);
+  var [filteredProducts, setFilteredProducts] = useState();
   // const [isLogged, setIslogged] = useState(false);
 
   useEffect(() => {
 
     
-    fetch(`http://localhost:1337/api/products`)
+    fetch(`http://localhost:1337/api/products?populate=*`)
     .then(res=>res.json())
     .then(data=> {
       console.log(data.data)
       setProducts(data.data)
-      setFilteredProducts(data.data)
+      setFilteredProducts(products)
     })  
     
   }, [])
@@ -53,19 +53,20 @@ export default function HomePage() {
 
 
     
-    {products && products.map((product) => (
-            <ProductCard product={product} /> 
-        ))}
-          {/* {products? 
+   
+          {filteredProducts && filteredProducts.length > 0? 
           <>
-          {filteredProducts && filteredProducts.map((product) => (
+          { filteredProducts.map((product) => (
                   <ProductCard product={product} /> 
               ))}
           </>
-              : <h1> Loading Data
-              </h1>
+              : <>
+            {products && products.map((product) => (
+                        <ProductCard product={product} /> 
+                    ))}
+              </>
         }
-          */}
+         
  
         </div>
         </div>

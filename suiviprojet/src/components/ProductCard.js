@@ -9,7 +9,7 @@ export default function ProductCard(props) {
         <div className="bgcolor">
           <img
             className="card-image justify-center"
-            src={props.product.attributes.image}
+            src={props.product.attributes.image.data.attributes.caption}
           />
         </div>
 
