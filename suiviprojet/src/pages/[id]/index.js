@@ -8,14 +8,14 @@ const Index = () => {
   useEffect(() => {
     const id = router.query.id;
 
-    fetch(`https://fakestoreapi.com/products/${id}`)
+    fetch(`http://localhost:1337/api/products/${id}`)
       .then((res) => {
         console.log(res);
         return res.json();
       })
       .then((data) => {
         console.log(data);
-        setProduct(data);
+        setProduct(data.data);
       });
   }, []);
 
@@ -25,19 +25,19 @@ const Index = () => {
         <div className="one-product__asset">
           <img
             className="one-product__asset__image"
-            src={product && product.image}
+            src=""
           />
         </div>
         <span className="divider" />
         <div className="one-product__data">
           <h1 className="one-product__data__title">
-            {product && product.title}
+            {product && product.attributes.title}
           </h1>
           <p className="one-product__data__price">
-            {product && product.price} €
+            {product && product.attributes.price} €
           </p>
           <p className="one-product__data__desc">
-            {product && product.description}
+            {product && product.attributes.description}
           </p>
 
           <button className="one-product__data__buttonADD">

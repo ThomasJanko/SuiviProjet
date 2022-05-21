@@ -11,7 +11,7 @@ const Login = () => {
 
     const router = useRouter();
     const store = useContext(AppContext);
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState();
     const [showModal, setShowModal] = useState(false);
    
     const submitLogin = (e) => {

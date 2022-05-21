@@ -9,16 +9,16 @@ export default function ProductCard(props) {
         <div className="bgcolor">
           <img
             className="card-image justify-center"
-            src={props.product.image}
+            src={props.product.attributes.image}
           />
         </div>
 
         <div className="product_data">
-          <h1>{props.product.title}</h1>
+          <h1>{props.product.attributes.title}</h1>
           <div className="pricecolor">
-            <p className="price">${props.product.price}</p>
+            <p className="price">${props.product.attributes.price}</p>
           </div>
-          <p className="card_desc">{props.product.description}</p>
+          <p className="card_desc">{props.product.attributes.description}</p>
           {/* <Link href={`/shop/${props.product.id}`}> */}
           {/* <div><Button text="See product" type="button" class="btn_card rounded_2"/></div> */}
           {/* </Link> */}

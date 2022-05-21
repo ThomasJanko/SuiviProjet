@@ -17,11 +17,12 @@ export default function HomePage() {
   useEffect(() => {
 
     
-    fetch(`https://fakestoreapi.com/products/`)
+    fetch(`http://localhost:1337/api/products`)
     .then(res=>res.json())
     .then(data=> {
-      setProducts(data)
-      setFilteredProducts(data)
+      console.log(data.data)
+      setProducts(data.data)
+      setFilteredProducts(data.data)
     })  
     
   }, [])
@@ -30,7 +31,7 @@ export default function HomePage() {
   if (products) {
     filteredProducts = products.filter((product) => {
       if (
-        product.title.toLowerCase().includes(store.state.search) 
+        product.attributes.title.toLowerCase().includes(store.state.search) 
         // product.tags.toLowerCase().includes(store.state.search)
       ) {
         console.log(product);
@@ -59,7 +60,7 @@ export default function HomePage() {
     )} */}
 
     
-    {filteredProducts && filteredProducts.map((product) => (
+    {products && products.map((product) => (
             <ProductCard product={product} /> 
         ))}
          
