@@ -20,23 +20,25 @@
     height: 600px;
     display: inline-block;
     margin: 20px 10px;
-    border-bottom: solid;
+    border: solid;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-width: 2px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
+    border-radius: 10px;
     // background-color: white;
     font-family: $titleFont;
     &:hover {
       border-color: $primaryColor;
+      
     }
 
     .bgcolor {
       width: 100%;
       height: 50%;
-      margin: 20px 0;
-      background-color: $primaryColor;
+      margin: 30px 0px;
+      // background-color: $primaryColor;
       transform: skewY(-5deg);
     }
 

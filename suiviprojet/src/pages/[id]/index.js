@@ -26,10 +26,12 @@ const Index = () => {
     <>
       <div className="one-product">
         <div className="one-product__asset">
+          {product &&
           <img
             className="one-product__asset__image"
             src={product.attributes.image.data.attributes.caption}
           />
+            }
         </div>
         <span className="divider" />
         <div className="one-product__data">
