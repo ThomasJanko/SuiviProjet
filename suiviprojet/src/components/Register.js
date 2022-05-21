@@ -56,7 +56,7 @@ const Register = () => {
            </form>
 
            <span className='login_signup'>
-           <Link href="/login">
+           <Link href="/account">
             <strong>Login</strong>
             </Link>
             </span>

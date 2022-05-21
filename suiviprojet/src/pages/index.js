@@ -16,7 +16,6 @@ export default function HomePage() {
 
   useEffect(() => {
 
-    
     fetch(`https://fakestoreapi.com/products/`)
     .then(res=>res.json())
     .then(data=> {
@@ -46,22 +45,20 @@ export default function HomePage() {
   return (
     <>
 
-    <div className="home_page">
-      
-  
-        {/* <TitlePage title="Shop"  /> */}
-       
+    <div className="home_page">   
  
         <div className='cards-products'>
 
-    {/* {filteredProducts && (
-      <ProductCard products />
-    )} */}
 
-    
-    {filteredProducts && filteredProducts.map((product) => (
-            <ProductCard product={product} /> 
-        ))}
+          {products? 
+          <>
+          {filteredProducts && filteredProducts.map((product) => (
+                  <ProductCard product={product} /> 
+              ))}
+          </>
+              : <h1> Loading Data
+              </h1>
+        }
          
  
         </div>
