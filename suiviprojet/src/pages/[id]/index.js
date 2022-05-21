@@ -6,9 +6,12 @@ const Index = () => {
   const [product, setProduct] = useState();
 
   useEffect(() => {
+
+    if(!router.isReady) return;
     const id = router.query.id;
 
-    fetch(`http://localhost:1337/api/products/${id}`)
+
+    fetch(`http://localhost:1337/api/products/${id}?populate=*`)
       .then((res) => {
         console.log(res);
         return res.json();
@@ -25,7 +28,7 @@ const Index = () => {
         <div className="one-product__asset">
           <img
             className="one-product__asset__image"
-            src=""
+            src={product.attributes.image.data.attributes.caption}
           />
         </div>
         <span className="divider" />

@@ -17,7 +17,7 @@ export default function HomePage() {
   useEffect(() => {
 
     
-    fetch(`http://localhost:1337/api/products`)
+    fetch(`http://localhost:1337/api/products?populate=*`)
     .then(res=>res.json())
     .then(data=> {
       console.log(data.data)
@@ -53,10 +53,10 @@ export default function HomePage() {
 
 
     
-    {products && products.map((product) => (
+    {/* {products && products.map((product) => (
             <ProductCard product={product} /> 
-        ))}
-          {/* {products? 
+        ))} */}
+          {products? 
           <>
           {filteredProducts && filteredProducts.map((product) => (
                   <ProductCard product={product} /> 
@@ -65,7 +65,7 @@ export default function HomePage() {
               : <h1> Loading Data
               </h1>
         }
-          */}
+         
  
         </div>
         </div>
