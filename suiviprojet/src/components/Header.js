@@ -33,7 +33,7 @@ function Header () {
 
 
           <div className="flex items-center space-x-4">
-          <Link href="/whishlist">
+          {/* <Link href="/whishlist">
             <a  className="text-center text-gray-300 hover:text-red-500 transition relative">
               <div className="text-4xl">
               <ion-icon name="heart-outline"></ion-icon>
@@ -44,7 +44,7 @@ function Header () {
 
               <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-red-600 text-white text-xs"> 8 </span>
             </a>
-            </Link>
+            </Link> */}
 
           <Link href="/cart">
             <a className="text-center text-gray-300 hover:text-red-500 transition relative">

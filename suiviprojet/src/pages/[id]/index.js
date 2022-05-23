@@ -75,7 +75,7 @@ const Index = () => {
             {product && product.attributes.title}
           </h1>
           <p className="one-product__data__price">
-            {product && product.attributes.price} €
+             {product && product.attributes.price} €
           </p>
           <p className="one-product__data__desc">
             {product && product.attributes.description}

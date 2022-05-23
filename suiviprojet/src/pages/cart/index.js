@@ -34,6 +34,10 @@ export default function index() {
       localStorage.setItem("cart", JSON.stringify(productList));
       setProductList(JSON.parse(localStorage.getItem("cart")));
     }
+
+    else{
+      deleteProduct(product)
+    }
   };
 
   const deleteProduct = (product) => {

@@ -133,6 +133,8 @@
 
   &__data{
     margin: auto;
+    margin-left: 0px;
+    font-size: 30px;
 
     &__title{
       margin: 10px 0;
@@ -149,5 +151,13 @@
       padding: 10px;
       border-radius: 10px;
     }
+
+   
   }
+
+
+  .one-product__asset__image{
+    width: 800px;
+  }
+  
 }

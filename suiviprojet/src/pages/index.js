@@ -27,6 +27,9 @@ export default function HomePage() {
     
   }, [])
 
+
+  
+
   
   if (products) {
     filteredProducts = products.filter((product) => {
