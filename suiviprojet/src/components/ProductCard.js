@@ -46,7 +46,7 @@ export default function ProductCard(props) {
         <div className="bgcolor">
           <img
             className="card-image justify-center"
-            src={props.product.attributes.image.data.attributes.caption}
+            src={`http://localhost:1337${props.product.attributes.image.data.attributes.url}`}
           />
         </div>
 
