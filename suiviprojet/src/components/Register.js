@@ -54,7 +54,7 @@ const Register = () => {
           <button
             type="submit"
             className="login__btn"
-            onClick={() => Register()}
+            
           >
             Enregistrer
           </button>
