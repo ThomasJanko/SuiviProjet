@@ -18,14 +18,25 @@
         border: 1px solid #000;
     }
 
+    img{
+       height: 100px;
+      padding-left: 24%;
+      padding-top: 10px;
+    //   border-bottom: solid 1px;
+      width: 80%;
+        
+    }
+
     .quantityTD{
         display: flex;
         justify-content: space-between;
+        
 
         button{
             background-color: $primaryColor;
             border-radius: 5px;
             padding: 5px 10px;
+            
         }
 
         p{

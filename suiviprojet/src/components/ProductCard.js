@@ -3,6 +3,43 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 
 export default function ProductCard(props) {
+
+  const addToCart = (e, product) => {
+    //Create object with new property quantity
+    e.preventDefault();
+    let productToInsert = {
+      id: product.id,
+      title: product.attributes.title,
+      image: product.attributes.image,
+      price: product.attributes.price,
+      quantity: 1,
+    };
+
+    const myCart = [];
+
+    if (localStorage.getItem("cart")) {
+
+      const localStorageCart = JSON.parse(localStorage.getItem("cart"));
+
+      localStorageCart.forEach((element) => {
+        myCart.push(element);
+      });
+
+      const indexOfExistingId = myCart.findIndex((el) => el.id === product.id);
+
+      if (indexOfExistingId !== -1){
+        myCart[indexOfExistingId].quantity ++;
+      }
+      else{
+        myCart.push(productToInsert);
+      }
+      
+      localStorage.setItem("cart", JSON.stringify(myCart));
+    } else {
+      myCart.push(productToInsert);
+      localStorage.setItem("cart", JSON.stringify(myCart));
+    }
+  };
   return (
     <Link href={`/${props.product.id}`}>
       <div className="card items-center" key={props.product.id}>
@@ -25,7 +62,7 @@ export default function ProductCard(props) {
         </div>
 
         <div className="product_button">
-          <Button variant="contained" color="error">
+          <Button variant="contained" color="error" onClick={(e) => addToCart(e, props.product)}>
             Add to Cart
           </Button>
         </div>

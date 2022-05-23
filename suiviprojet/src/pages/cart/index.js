@@ -88,7 +88,7 @@ export default function index() {
               {productList &&
                 productList.map((product) => (
                   <tr key={product.id}>
-                    <img src={product.image} alt={product.title} />
+                    <img src={product.image.data.attributes.caption} alt={product.title} />
                     <td>{product.title}</td>
                     <td>{product.price} €</td>
                     <td className="quantityTD">
