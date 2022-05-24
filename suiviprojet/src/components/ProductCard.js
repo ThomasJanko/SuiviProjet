@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import AppContext from "../AppContext";
 
 export default function ProductCard(props) {
+
+  const store = useContext(AppContext);
+
 
   const addToCart = (e, product) => {
     //Create object with new property quantity
@@ -61,11 +65,17 @@ export default function ProductCard(props) {
           {/* </Link> */}
         </div>
 
-        <div className="product_button">
-          <Button variant="contained" color="error" onClick={(e) => addToCart(e, props.product)}>
-            Add to Cart
-          </Button>
-        </div>
+      {store.state.user!="User"?
+         <div className="product_button">
+         <Button variant="contained" color="error" onClick={(e) => addToCart(e, props.product)}>
+           Add to Cart
+         </Button>
+       </div>
+       : <>
+       </>
+      }
+      
+       
       </div>
     </Link>
   );

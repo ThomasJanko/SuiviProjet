@@ -46,6 +46,8 @@ function Header () {
             </a>
             </Link> */}
 
+            {store.state.user!="User"?
+            
           <Link href="/cart">
             <a className="text-center text-gray-300 hover:text-red-500 transition relative">
               <div className="text-4xl">
@@ -58,6 +60,8 @@ function Header () {
               <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-red-600 text-white text-xs"> 8 </span>
             </a>
           </Link>
+      :<></>
+        } 
 
 
           <Link href="/account">

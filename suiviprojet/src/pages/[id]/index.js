@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import AppContext from "../../AppContext";
+
 
 const Index = () => {
+
+  const store = useContext(AppContext);
+
   const router = useRouter();
   const [product, setProduct] = useState();
 
@@ -80,10 +85,13 @@ const Index = () => {
           <p className="one-product__data__desc">
             {product && product.attributes.description}
           </p>
-
+          
+          {store.state.user!="User"?
           <button className="one-product__data__buttonADD" onClick={e => addToCart(e, product)}>
             Add to Cart
           </button>
+          :<></>
+          }
         </div>
       </div>
     </>
