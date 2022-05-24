@@ -9,7 +9,9 @@ import { useState } from 'react';
 function MyApp({ Component, pageProps }) {
 
   const [user, setUser] = useState("User")
-  const [search, setSearch] = useState()
+  const [search, setSearch] = useState("")
+  const [category, setCategory] = useState("")
+
 
   return (
     // <Router>
@@ -17,10 +19,12 @@ function MyApp({ Component, pageProps }) {
     value={{
       state: {
         search: search,
-        user: user
+        user: user,
+        category: category,
       },
       setUser: setUser,
       setSearch: setSearch,
+      setCategory: setCategory,
     }}
   >
     {/* <Switch> */}

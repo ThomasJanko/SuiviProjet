@@ -7,6 +7,9 @@ import AppContext from "../AppContext";
 function Header () {
 
   const store = useContext(AppContext)
+
+  
+  
   return (
  
     <header className=" -my-10  shadow-sm bg-teal-400 relative" >
@@ -79,7 +82,15 @@ function Header () {
           </div>
       </div>
       
-      <button type="" ></button>
+      <div className="flex justify-between categories" style={{width: '30%', marginTop: '-20px'}}>
+
+      <button onClick={() => store.setCategory("All")}>All </button>
+        <button onClick={() => store.setCategory("Sport")}>Sport </button>
+        <button onClick={() => store.setCategory("Jeux")}> Jeux </button>
+        <button onClick={() => store.setCategory("Informatique")}> Informatique </button>
+
+       
+      </div>
      
      
 

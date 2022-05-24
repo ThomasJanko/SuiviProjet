@@ -14,6 +14,7 @@ export default function HomePage() {
   var [filteredProducts, setFilteredProducts] = useState();
   // const [isLogged, setIslogged] = useState(false);
 
+
   useEffect(() => {
 
     
@@ -22,7 +23,7 @@ export default function HomePage() {
     .then(data=> {
       console.log(data.data)
       setProducts(data.data)
-      setFilteredProducts(products)
+    setFilteredProducts(products)
     })  
     
   }, [])
@@ -34,7 +35,9 @@ export default function HomePage() {
   if (products) {
     filteredProducts = products.filter((product) => {
       if (
-        product.attributes.title.toLowerCase().includes(store.state.search) 
+        product.attributes.title.toLowerCase().includes(store.state.search) &&
+        product.attributes.category.toLowerCase() == (store.state.category).toLowerCase() && 
+        product.attributes.category.toLowerCase() != "All"
         // product.tags.toLowerCase().includes(store.state.search)
       ) {
         console.log(product);
@@ -44,6 +47,8 @@ export default function HomePage() {
       return null;
     });
   }
+
+ 
 
 
   
@@ -59,7 +64,7 @@ export default function HomePage() {
    
           {filteredProducts && filteredProducts.length > 0? 
           <>
-          { filteredProducts.map((product) => (
+          {filteredProducts.map((product) => (
                   <ProductCard product={product} /> 
               ))}
           </>
